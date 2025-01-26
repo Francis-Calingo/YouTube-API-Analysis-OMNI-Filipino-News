@@ -81,10 +81,127 @@
 
 ## Part 2: Data Cleaning and Pre-Processing Using Pandas
 
+#### Step 1: Pandas Operations for "Likes", "Comments", "Views"
+
+<p>The three mentioned variables constitute a video's engagement. We perform a check to ensure that there are no null values, as that could cause issues.</p>
+
+<p>Then, we convert those three columns into "numeric" columns, as in the dataframe, even though the counts abviously represent numerical values, it is currently stored as "strings" (or, treated as "words").</p>
+
+#### Step 2: Ensure Publication Dates are Stored as Dates
+
+<p>In a similar vein, we want the dates to be stored as dates, not as strings. Therefore, this pandas operation was executed to convert their datatype:</p>
+
+![image](https://github.com/user-attachments/assets/716e5369-e984-4682-8573-492f7eab3ecc)
+
+<p>The column can then be added to the dataframe.</p>
+
+#### Step 3: Drop Duplicated Titles
+
+<p>Duplicated entries in the "title" column represents duplicate uploads and are not useful for this analysis. Check for any duplicates in that columns, then drop their associated rows.</p>
+
+#### Step 4: Filter for 2024 Videos
+
+<p>Use this code snippet to filter for videos uploaded in the calendar year 2024:</p>
+
+![image](https://github.com/user-attachments/assets/74064955-824d-4e72-be86-004ddc059214)
+
+#### Step 5: Group by Months to Perform Month-by-Month Operations
+
+<p>Use this code snippet to perform a groupby operation on the dataframe by month:</p>
+
+![image](https://github.com/user-attachments/assets/a74b4df4-7bc2-4f31-bca7-009d7b60a8dc)
+
+<p>Then we can find the monthly sum of each metric:</p>
+
+![image](https://github.com/user-attachments/assets/8c37dc8a-0a1b-4ba5-b0f1-50f89badad2e)
+
+<p>The monthly average for each metric:</p>
+
+![image](https://github.com/user-attachments/assets/9309310c-5d6e-47f1-b800-a7df26e9a8ff)
+
+<p>A similar operation can be executed for total uploads:</p>
+
+![image](https://github.com/user-attachments/assets/f306cc94-da69-46e6-b17b-0d4c4999638d)
+
+<p>An extra operation for further analysis:</p>
+
+![image](https://github.com/user-attachments/assets/2dfc6d25-37a2-483e-b804-2a5aab8f532a)
+
+#### Step 6: Top 5 for Each Metric for 2024
+
+<p>Here is the code snippet for ascertaining the 5 most viewed videos of 2024, with English translation:</p>
+
+![image](https://github.com/user-attachments/assets/a80f34b7-757f-451d-bdf5-4d710ef5f580)
+
+<p>You can use similar snippets for ascertaining the 5 most liked and 5 most commented videos, respectively. Just ensure to change the variables and column assignment:</p>
+
+![image](https://github.com/user-attachments/assets/c58454e0-e5c2-485b-829b-fe3cfdf2bcef)
+
+![image](https://github.com/user-attachments/assets/17b87b2c-3f07-4ca7-831b-636739be5399)
+
+<p>For fun, here are the most viewed videos for each month:</p>
+
+![image](https://github.com/user-attachments/assets/c0388b5d-cb72-44f1-94d4-9f9e5afd0eff)
+
 ## Part 3: Data Visualization with HV Plot
+
+#### Step 1: Install Necessary Libraries
+
+<p>hvplot and jupyter_bokeh will be used for interactivity. Import panel.</p>
+
+<p>For generating a wordcloud, PIL and wordCloud will be used (specifically Image, and WordCloud, STOPWORDS, ImageColorGenerator)</p>
+
+#### Step 2: Create First Panel Visualization (Monthly Statistics)
+
+<p>Use the following snippet to generate an hv bar plot for total uploads per month:</p>
+
+![image](https://github.com/user-attachments/assets/fb415cb7-b519-4aa8-bde3-d2399f2b42d5)
+
+<p>Similarly, generate similar plots for monthly total likes, views, and comments, as well as their averages:</p>
+
+![image](https://github.com/user-attachments/assets/ca1d8de9-6d7c-478b-8106-dd69f5652999)
+
+![image](https://github.com/user-attachments/assets/06ec473e-2361-4c65-b784-e24e404ef225)
+
+<p>This is now where the panel library shines, because it amalgamates all of these plots into one interactive panel:</p>
+
+![image](https://github.com/user-attachments/assets/8321fe5c-bcd4-4cc6-94a7-c976514abd7a)
+
+![image](https://github.com/user-attachments/assets/3e8f8e0d-a465-441e-aee5-b8d6bf588cc6)
+
+![image](https://github.com/user-attachments/assets/996c5183-34bf-45d6-a599-99e0c9ac44af)
+
+![image](https://github.com/user-attachments/assets/21734e03-36c3-4c81-a2da-e6812cb707c9)
+
+#### Step 3: Create Second Panel Visualization (Top 5/Top 10 Tables)
+
+<p>In a similar vein, we can get the top 5/top 10 tables, and amalgamate them into one interactive panel:</p>
+
+![image](https://github.com/user-attachments/assets/2cc4b1ef-838d-4bbb-ac1f-3cef6941a4e5)
+
+#### Step 4: Histogram Visualization (Views)
+
+![image](https://github.com/user-attachments/assets/92fff153-20ac-42ab-b941-3ef057ef8cd0)
+
+#### Step 5: Tagalog Language Natural Language Processing
+
+<p>Generate a wordcloud to visualize the most commonly used words in the video titles:</p>
+
+![image](https://github.com/user-attachments/assets/ff11a229-41ae-4636-935d-915045c1ffc9)
+
+<p>There are many words that are not useful to this analysis such as "OMNI". Geographic names such as cities, common Tagalog words such as "ang" ("the") are also not useful.</p>
+
+<p>Use STOPWORDS to exclude certain words that are not useful to the analysis such as the ones that fall under either of the three categories. Then, generate a new wordcloud.</p>
+
+![image](https://github.com/user-attachments/assets/cc5f10e4-3846-4254-a106-58e2ec0efc5f)
 
 ## Discussion
 
-
+<p>The resulting data visualizations show that conditions of immigrants (especially in the context of international students and recent changes to Canadian immigration law),
+and Philippine politics in relation to former president Rodrigo Duterte were the most covered and discussed topics in the community in 2024.
+There was a spike of video uploads during the summer months, especially in June (Philippine Heritage Month) and August (Taste of Manila Festival in Toronto).
+Regardless, much of the engagements and discussions still stemmed from the two aforementioned topics.
+With the upcoming Philippine and Canadian general elections, it is of utmost importance for candidates to address the Filipino Canadian community’s concerns with immigration policies and their effects on them.
+</p>
 
 

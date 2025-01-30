@@ -1,7 +1,7 @@
 # PROJECT OVERVIEW: YouTube API Analysis, OMNI Filipino News' 2024 Coverage (with Python)
   <ul>
     <li>Used YouTube's API to extract data from OMNI Television's Filipino playlist (particularly its 2024 videos).</li>
-      <li>OMNI, one of the largest multilingual media outlets in Canada, offers services in Tagalog ("Filipino"). Therefore, scraping data on their Filipino playlist to ascertain and discern potentially interesting insights on topics that mattered a lot to the Filipino Canadian commuinity.</li>
+      <li>OMNI, one of the largest multilingual media outlets in Canada, offers services in Tagalog ("Filipino"). Therefore, scraping data on their Filipino playlist to ascertain and discern potentially interesting insights on topics that mattered a lot to the Filipino Canadian community.</li>
     <li>Used Pandas, hvplot, and natural language processing to visualize the data.</li>
 
   </ul>
@@ -19,7 +19,7 @@
   </ul>
 
 ## YouTube API Introduction
-<p>An application program interface (API) is a mechanism that allows for two computer applications to communicate and connect with each other. Many websites, from the National Hockey League to YouTube, have their own API, which allows local machines such as your laptop and mobile phone to access them and their data. In fact, for this project, YouTube API will be used, as it is a helpful tool in ascertaining a wide variety of data from YouTube channels, from its engagements to upload counts to qualitative data such as its most-liked comments. However, before beginning any project involving YouTube's API, one will need an API key. Instructions to recieve the key is stipulated on its website: https://developers.google.com/youtube/v3/getting-started . A Google account is needed. Then, set a variable equal to the key for convenience. Keys are uniquely generated, so it will be diffrerent for each user.</p>
+<p>An application program interface (API) is a mechanism that allows for two computer applications to communicate and connect with each other. Many websites, from the National Hockey League to YouTube, have their own API, which allows local machines such as your laptop and mobile phone to access them and their data. In fact, for this project, YouTube API will be used, as it is a helpful tool in ascertaining a wide variety of data from YouTube channels, from its engagements to upload counts to qualitative data such as its most-liked comments. However, before beginning any project involving YouTube's API, one will need an API key. Instructions to receive the key are stipulated on its website: https://developers.google.com/youtube/v3/getting-started . A Google account is needed. Then, set a variable equal to the key for convenience. Keys are uniquely generated, so it will be different for each user.</p>
 
 ![image](https://github.com/user-attachments/assets/62df7c64-64ad-4dd0-8d9e-9605a7128f83)
 
@@ -71,7 +71,7 @@
 
 ![image](https://github.com/user-attachments/assets/7334e79f-8b5a-4347-9501-b8a48556dfac)
 
-<p>Now we can use this code snippet to get video statisticsz, partially drawing upon this webpage (https://developers.google.com/youtube/v3/docs/videos/list): </p>
+<p>Now we can use this code snippet to get video statistics, partially drawing upon this webpage (https://developers.google.com/youtube/v3/docs/videos/list): </p>
 
 ![image](https://github.com/user-attachments/assets/58981a22-d9e7-4301-89b3-14742cc9a905)
 
@@ -85,7 +85,7 @@
 
 <p>The three mentioned variables constitute a video's engagement. We perform a check to ensure that there are no null values, as that could cause issues.</p>
 
-<p>Then, we convert those three columns into "numeric" columns, as in the dataframe, even though the counts abviously represent numerical values, it is currently stored as "strings" (or, treated as "words").</p>
+<p>Then, we convert those three columns into "numeric" columns, as in the dataframe, even though the counts obviously represent numerical values, it is currently stored as "strings" (or, treated as "words").</p>
 
 #### Step 2: Ensure Publication Dates are Stored as Dates
 

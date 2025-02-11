@@ -12,9 +12,9 @@
     <li><b>Python Version:</b> 3.10.12</li>
     <li><b>Libraries and Packages:</b>
     <ul>
-      <li><b>API Libraries: </b> geopandas, matplotlib.plt </li>
-      <li><b>Libraries for data manipulation and visualization: </b> pandas, seaborn, plotly.express, numpy, hvplot</li>
-      <li><b>Libraries for natural language processing: </b> pandas, seaborn, plotly.express, numpy</li>
+      <li><b>API Libraries: </b> YouTube (from pytube), googleapiclient.discovery, json, JSON (from IPython.display) </li>
+      <li><b>Libraries for data manipulation and visualization: </b> pandas, datetime, numpy, hvplot, panel</li>
+      <li><b>Libraries for natural language processing: </b> Image (from PIL), seaborn, matplotlib, WordCloud (from wordcloud), STOPWORDS (from wordcloud), ImageColorGeneratorplotly.express (from wordcloud)</li>
     </ul></li>
   </ul>
 

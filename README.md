@@ -1,7 +1,34 @@
 # PROJECT OVERVIEW: YouTube API Analysis, OMNI Filipino News' 2024 Coverage (with Python)
+
+## Table of Contents
+* [Introduction](#introduction)
+* [Code and Resources Used](#code-and-resources-used)
+* [YouTube API Introduction](#youtube-api-introduction)
+* [Part 1: Scraping Channel and Video Data Using YouTube API](#part-1-scraping-channel-and-video-data-using-youtube-api)
+  *[Step 1: Get channel's ID](#step-1-get-channels-id)
+  *[Step 2: Get channel data](#step-2-get-channel-data)
+  *[Step 3: Get playlist ID](#step-3-get-playlist-id)
+  *[Step 4: Ascertain Video Details of the playlist](#step-4-ascertain-video-details-of-the-playlist)
+* [Part 2: Data Cleaning and Pre-Processing Using Pandas](#part-2-data-cleaning-and-pre-processing-using-pandas)
+  *[Step 1: Pandas Operations for "Likes", "Comments", "Views"](#step-1-pandas-operations-for-likes-comments-views)
+  *[Step 2: Ensure Publication Dates are Stored as Dates](#step-2-ensure-publication-dates-are-stored-as-dates)
+  *[Step 3: Drop Duplicated Titles](#step-3-drop-duplicated-titles)
+  *[Step 4: Filter for 2024 Videos](#step-4-filter-for-2024-videos)
+  *[Step 5: Group by Months to Perform Month-by-Month Operations](#step-5-group-by-months-to-perform-month-by-month-operations)
+  *[Step 5: Group by Months to Perform Month-by-Month Operations](#step-6-top-5-for-each-metric-for-2024) 
+* [Part 3: Data Visualization with HV Plot](#part-3-data-visualization-with-hv-plot)
+  *[Step 1: Install Necessary Libraries](#step-1-install-necessary-libraries)
+  *[Step 2: Create First Panel Visualization (Monthly Statistics)](#step-2-create-first-panel-visualization-monthly-statistics)
+  *[Step 3: Create Second Panel Visualization (Top 5/Top 10 Tables)](#step-3-create-second-panel-visualization-top-5top-10-tables)
+  *[Step 4: Histogram Visualization (Views)](#step-4-histogram-visualization-views)
+  *[Step 5: Tagalog Language Natural Language Processing](#step-5-tagalog-language-natural-language-processing)
+* [Discussion](#discussion)
+
+## Introduction
+
   <ul>
     <li>Used YouTube's API to extract data from OMNI Television's Filipino playlist (particularly its 2024 videos).</li>
-      <li>OMNI, one of the largest multilingual media outlets in Canada, offers services in Tagalog ("Filipino"). Therefore, scraping data on their Filipino playlist to ascertain and discern potentially interesting insights on topics that mattered a lot to the Filipino Canadian community.</li>
+    <li>OMNI, one of the largest multilingual media outlets in Canada, offers services in Tagalog ("Filipino"). Therefore, scraping data on their Filipino playlist to ascertain and discern potentially interesting insights on topics that mattered a lot to the Filipino Canadian community.</li>
     <li>Used Pandas, hvplot, and natural language processing to visualize the data.</li>
 
   </ul>

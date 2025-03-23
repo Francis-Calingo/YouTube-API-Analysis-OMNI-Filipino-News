@@ -24,16 +24,17 @@
   * [Step 5: Tagalog Language Natural Language Processing](#step-5-tagalog-language-natural-language-processing)
 * [Discussion](#discussion)
 
-## Introduction
-
+<details><summary><h2>Introduction</h2></summary> 
   <ul>
     <li>Used YouTube's API to extract data from OMNI Television's Filipino playlist (particularly its 2024 videos).</li>
     <li>OMNI, one of the largest multilingual media outlets in Canada, offers services in Tagalog ("Filipino"). Therefore, scraping data on their Filipino playlist to ascertain and discern potentially interesting insights on topics that mattered a lot to the Filipino Canadian community.</li>
     <li>Used Pandas, hvplot, and natural language processing to visualize the data.</li>
 
   </ul>
+
+</details>
   
-## Code and Resources Used
+<details><summary><h2>Code and Resources Used</h2></summary> 
   <ul>
     <li><b>IDEs Used:</b> Google Colab, Jupyter Notebook</li>
     <li><b>Python Version:</b> 3.10.12</li>
@@ -45,12 +46,17 @@
     </ul></li>
   </ul>
 
-## YouTube API Introduction
+</details>
+
+<details><summary><h2>YouTube API Introduction</h2></summary> 
+
 <p>An application program interface (API) is a mechanism that allows for two computer applications to communicate and connect with each other. Many websites, from the National Hockey League to YouTube, have their own API, which allows local machines such as your laptop and mobile phone to access them and their data. In fact, for this project, YouTube API will be used, as it is a helpful tool in ascertaining a wide variety of data from YouTube channels, from its engagements to upload counts to qualitative data such as its most-liked comments. However, before beginning any project involving YouTube's API, one will need an API key. Instructions to receive the key are stipulated on its website: https://developers.google.com/youtube/v3/getting-started . A Google account is needed. Then, set a variable equal to the key for convenience. Keys are uniquely generated, so it will be different for each user.</p>
 
 ![image](https://github.com/user-attachments/assets/62df7c64-64ad-4dd0-8d9e-9605a7128f83)
 
-## Part 1: Scraping Channel and Video Data Using YouTube API
+</details>
+
+<details><summary><h2>Part 1: Scraping Channel and Video Data Using YouTube API</h2></summary> 
 
 #### Step 1: Get channel's ID
 
@@ -106,7 +112,9 @@
 
 ![image](https://github.com/user-attachments/assets/588b8783-e50d-463e-8947-89b2f3c0ce04)
 
-## Part 2: Data Cleaning and Pre-Processing Using Pandas
+</details>
+
+<details><summary><h2>Part 2: Data Cleaning and Pre-Processing Using Pandas</h2></summary> 
 
 #### Step 1: Pandas Operations for "Likes", "Comments", "Views"
 
@@ -170,7 +178,9 @@
 
 ![image](https://github.com/user-attachments/assets/c0388b5d-cb72-44f1-94d4-9f9e5afd0eff)
 
-## Part 3: Data Visualization with HV Plot
+</details>
+
+<details><summary><h2>Part 3: Data Visualization with HV Plot</h2></summary> 
 
 #### Step 1: Install Necessary Libraries
 
@@ -222,7 +232,9 @@
 
 ![image](https://github.com/user-attachments/assets/cc5f10e4-3846-4254-a106-58e2ec0efc5f)
 
-## Discussion
+</details>
+
+<details><summary><h2>Discussion</h2></summary> 
 
 <p>The resulting data visualizations show that conditions of immigrants (especially in the context of international students and recent changes to Canadian immigration law),
 and Philippine politics in relation to former president Rodrigo Duterte were the most covered and discussed topics in the community in 2024.
@@ -231,4 +243,4 @@ Regardless, much of the engagements and discussions still stemmed from the two a
 With the upcoming Philippine and Canadian general elections, it is of utmost importance for candidates to address the Filipino Canadian community’s concerns with immigration policies and their effects on them.
 </p>
 
-
+</details>

@@ -52,7 +52,11 @@
 
 <p>An application program interface (API) is a mechanism that allows for two computer applications to communicate and connect with each other. Many websites, from the National Hockey League to YouTube, have their own API, which allows local machines such as your laptop and mobile phone to access them and their data. In fact, for this project, YouTube API will be used, as it is a helpful tool in ascertaining a wide variety of data from YouTube channels, from its engagements to upload counts to qualitative data such as its most-liked comments. However, before beginning any project involving YouTube's API, one will need an API key. Instructions to receive the key are stipulated on its website: https://developers.google.com/youtube/v3/getting-started . A Google account is needed. Then, set a variable equal to the key for convenience. Keys are uniquely generated, so it will be different for each user.</p>
 
-![image](https://github.com/user-attachments/assets/62df7c64-64ad-4dd0-8d9e-9605a7128f83)
+```python
+# Get API key, see https://developers.google.com/youtube/v3/getting-started
+api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
+```
+
 
 </details>
 
@@ -66,15 +70,58 @@
 
 <p>After copying it, paste it in your notebook and set is as a variable for convenience.</p>
 
-![image](https://github.com/user-attachments/assets/dd62c53e-f5b8-477c-a12e-66686c02fb30)
+```python
+# Get channel id of OMNI Television's YouTube channel
+channel_ids=['UC_8NvxZFBoG5vtco9_TvYfw',]
+```
 
 #### Step 2: Get channel data
 
 <p>Use the following two codes in sequential order in order to scrape the channel's data using the channel ID. Much of the code snippets are actually found in the YouTube API website (https://developers.google.com/youtube/v3/docs/channels/list):</p>
 
-![image](https://github.com/user-attachments/assets/90f8d978-aa18-46a4-bc17-4b55da59f565)
+```python
+# Most of the code can be found from https://developers.google.com/youtube/v3/docs/channels/list
 
-![image](https://github.com/user-attachments/assets/61374433-112d-4a4a-9440-02d11e053b88)
+api_service_name = "youtube"
+api_version = "v3"
+
+# Get credentials and create an API client
+youtube = googleapiclient.discovery.build(
+        api_service_name, api_version, developerKey=api_key)
+
+request = youtube.channelSections().list(
+        part="snippet,contentDetails",
+        channelId=','.join(channel_ids)
+    )
+response = request.execute()
+
+response=json.dumps(response)
+json.loads(response)
+```
+```python
+# Code to scrape channel statistics and display them as pandas dataframe
+def get_channel_stats(youtube, channel_ids):
+    all_data = []
+    request = youtube.channels().list(
+        part="snippet,contentDetails,statistics",
+        id=','.join(channel_ids)
+    )
+    response=request.execute()
+
+    #loop through items
+    for item in response['items']:
+        data = {'channelName': item['snippet']['title'],
+                'subscribers': item['statistics']['subscriberCount'],
+                'views': item['statistics']['viewCount'],
+                'totalVideos': item['statistics']['videoCount'],
+                'playlistId': item['contentDetails']['relatedPlaylists']['uploads']
+                }
+
+        all_data.append(data)
+
+    return pd.DataFrame(all_data)
+     
+```
 
 <p>We now have our channel data:</p>
 
@@ -88,28 +135,126 @@
 
 <p>Then use the following code snippet (taken from https://developers.google.com/youtube/v3/docs/playlists/list):</p>
 
-![image](https://github.com/user-attachments/assets/cbe5fabb-efec-485d-b724-503c2fcf39c6)
+```python
+# Now, using code from https://developers.google.com/youtube/v3/docs/playlists/list,
+# scrape data from OMNI Television's Filipino News playlist
+# We only need the request and response portion
+
+request = youtube.playlists().list(
+        part="snippet,contentDetails",
+        id="PLpYhyoAjmlDhnInWbukk9LAiqwRob6DGE" # playlist ID
+    )
+response = request.execute()
+print(response)
+```
 
 #### Step 4: Ascertain Video Details of the playlist
 
 <p>First, set the playlist ID as a variable for convenience:</p>
 
-![image](https://github.com/user-attachments/assets/ed116384-8cc0-43e1-9c7c-7018e1197953)
+```python
+playlist_id='PLpYhyoAjmlDhnInWbukk9LAiqwRob6DGE'
+```
 
 <p>Then use the following code snippet that partially draws from this webpage (https://developers.google.com/youtube/v3/docs/videos/list): </p>
 
-![image](https://github.com/user-attachments/assets/41c9b513-bdb3-4c00-b419-329418581ded)
+```python
+# Create a function to scrape video ids of all videos in the playlist
+# Use parts of the code from https://developers.google.com/youtube/v3/docs/videos/list
+# and embed in the function
+# We only need the request and response portion
+def get_video_ids(youtube, playlist_id):
+
+    video_ids = []
+    request = youtube.playlistItems().list(
+        part="snippet,contentDetails",
+        playlistId=playlist_id,
+        maxResults = 50 # The set maximum is 50, but we want all of the videos
+    )
+    response = request.execute()
+
+    for item in response['items']:
+        video_ids.append(item['contentDetails']['videoId'])
+
+    # To get around the 50-item limitation, we will need to insert the following
+    # for loop in between this function
+    # Use the same code as above
+    ##################################################################################
+
+    next_page_token = response.get('nextPageToken')
+    while next_page_token is not None:
+      request=youtube.playlistItems().list(
+        part="snippet,contentDetails",
+        playlistId=playlist_id,
+        maxResults = 50,
+        pageToken=next_page_token
+      )
+      response = request.execute()
+
+      for item in response['items']:
+        video_ids.append(item['contentDetails']['videoId'])
+
+      next_page_token = response.get('nextPageToken')
+
+    # This loop essentially retieves data for the next 50 results (i.e., videos),
+    # and iterates until the function has wnet through the entire playlist
+    ##################################################################################
+
+    return video_ids
+```
 
 <p>To check if the function works, check if the total number of entries ("length") matches the total number of videos uploaded, which it indeed does (as of the completion date of this project): </p>
 
-![image](https://github.com/user-attachments/assets/7334e79f-8b5a-4347-9501-b8a48556dfac)
+```python
+video_ids=get_video_ids(youtube, playlist_id)
+len(video_ids) # Check if the length matches the number of videos in the playlist
+```
 
 <p>Now we can use this code snippet to get video statistics, partially drawing upon this webpage (https://developers.google.com/youtube/v3/docs/videos/list): </p>
 
-![image](https://github.com/user-attachments/assets/58981a22-d9e7-4301-89b3-14742cc9a905)
+```python
+# Now we can get the statistics of each video in the playlist
+# Use code from https://developers.google.com/youtube/v3/docs/videos/list
+# We only need the request and response portion
+
+def get_video_details(youtube, video_ids):
+  all_video_info = []
+
+  # Loop through video_ids in chunks of 50
+  for i in range(0, len(video_ids), 50):
+    request = youtube.videos().list(
+        part="snippet,contentDetails,statistics",
+        id=','.join(video_ids[i:i+50])
+    )
+    response = request.execute()
+  # Get stats
+    for video in response['items']:
+        stats_to_keep = {'snippet': ['channelTitle', 'title', 'description', 'tags', 'publishedAt'],
+                        'statistics': ['viewCount', 'likeCount', 'favouriteCount', 'commentCount'],
+                        'contentDetails': ['duration', 'definition', 'caption']
+                        }
+        video_info = {}
+        video_info['video_id'] = video['id']
+
+        for k in stats_to_keep.keys():
+            for v in stats_to_keep[k]:
+                try:
+                    video_info[v] = video[k][v]
+                except:
+                    video_info[v] = None # This is to account for any null values
+        all_video_info.append(video_info)
+
+  # Moved return statement outside the loop to return the complete DataFrame
+  return pd.DataFrame(all_video_info)
+```
 
 <p>The result: </p>
 
+```python
+video_df=get_video_details(youtube, video_ids)
+video_df
+# For some reason, a video from OMNI News Mandarin was included in the playlist, perhaps by mistake, disregard
+```
 ![image](https://github.com/user-attachments/assets/588b8783-e50d-463e-8947-89b2f3c0ce04)
 
 </details>
@@ -126,7 +271,13 @@
 
 <p>In a similar vein, we want the dates to be stored as dates, not as strings. Therefore, this pandas operation was executed to convert their datatype:</p>
 
-![image](https://github.com/user-attachments/assets/716e5369-e984-4682-8573-492f7eab3ecc)
+```python
+# Convert "publishedAt" string column to datetime format
+PublishDate=video_df['publishedAt']
+PublishDate_String = pd.to_datetime(video_df['publishedAt'])
+PublishDate_Formatted = PublishDate_String.dt.strftime('%Y-%m-%d')
+PublishDate_Formatted
+```
 
 <p>The column can then be added to the dataframe.</p>
 
@@ -138,33 +289,101 @@
 
 <p>Use this code snippet to filter for videos uploaded in the calendar year 2024:</p>
 
+```python
+# Create new dataframe, to filter for videos from 2024, and for columns for analysis
+New_df=video_df[['title', 'Publication Date', 'viewCount', 'likeCount', 'commentCount']]
+New_df=New_df[(New_df['Publication Date'] > '2023-12-31') & (New_df['Publication Date'] < '2025-01-01')]
+New_df['Publication Date'] = pd.to_datetime(New_df['Publication Date'])
+New_df['Month'] = New_df['Publication Date'].dt.strftime('%B')
+New_df.set_index('Month')
+New_df
+```
+
 ![image](https://github.com/user-attachments/assets/74064955-824d-4e72-be86-004ddc059214)
 
 #### Step 5: Group by Months to Perform Month-by-Month Operations
 
 <p>Use this code snippet to perform a groupby operation on the dataframe by month:</p>
 
-![image](https://github.com/user-attachments/assets/a74b4df4-7bc2-4f31-bca7-009d7b60a8dc)
+```python
+# Group by months
+New_df = New_df.set_index(pd.to_datetime(New_df['Publication Date']))
+grouped_df = New_df.groupby(pd.Grouper(freq='M'))
+grouped_df
+```
 
 <p>Then we can find the monthly sum of each metric:</p>
+
+```python
+# Monthly sum of each metric
+grouped_df[['viewCount', 'likeCount', 'commentCount']].sum()
+Sum_df=pd.DataFrame(grouped_df[['viewCount', 'likeCount', 'commentCount']].sum())
+Sum_df['Month'] = Sum_df.index.strftime('%B')
+Sum_df.set_index('Month')
 
 ![image](https://github.com/user-attachments/assets/8c37dc8a-0a1b-4ba5-b0f1-50f89badad2e)
 
 <p>The monthly average for each metric:</p>
 
+```python
+# Monthly average of each metric
+
+grouped_df[['viewCount', 'likeCount', 'commentCount']].mean()
+Mean_df=pd.DataFrame(grouped_df[['viewCount', 'likeCount', 'commentCount']].mean())
+Mean_df['Month'] = Size_df.index.strftime('%B')
+Mean_df.set_index('Month')
+```
+
 ![image](https://github.com/user-attachments/assets/9309310c-5d6e-47f1-b800-a7df26e9a8ff)
 
 <p>A similar operation can be executed for total uploads:</p>
 
+```python
+# Total number of video uploads by month
+
+grouped_df.size()
+Size_df=pd.DataFrame(grouped_df.size())
+Size_df.rename(columns={0: 'Number of Uploads'}, inplace=True)
+Size_df['Month'] = Size_df.index.strftime('%B')
+Size_df.set_index('Month')
+```
+
 ![image](https://github.com/user-attachments/assets/f306cc94-da69-46e6-b17b-0d4c4999638d)
 
 <p>An extra operation for further analysis:</p>
+
+```python
+# Monthly per-video count
+
+PerVid_df=pd.DataFrame([Sum_df['Month'], Sum_df['viewCount']/Size_df['Number of Uploads'],
+                        Sum_df['likeCount']/Size_df['Number of Uploads'],
+                        Sum_df['commentCount']/Size_df['Number of Uploads']]).transpose()
+PerVid_df.columns=['Month', 'Views/Upload', 'Likes/Upload', 'Comments/Upload']
+PerVid_df['Month'] = Size_df.index.strftime('%B')
+PerVid_df.set_index('Month')
+```
 
 ![image](https://github.com/user-attachments/assets/2dfc6d25-37a2-483e-b804-2a5aab8f532a)
 
 #### Step 6: Top 5 for Each Metric for 2024
 
 <p>Here is the code snippet for ascertaining the 5 most viewed videos of 2024, with English translation:</p>
+
+```python
+# 5 most viewed videos of 2024
+
+Top5View_df=New_df[['title', 'viewCount']].nlargest(5, 'viewCount')
+Top5View_df
+
+# Translate titles to English
+EnglishView=['Pinoy Super Visa holder passes away after suffering a stroke on a flight going to Canada',
+             'Warning for temporary residents crossing the land border for processing in Canada',
+             'Tourist hospitalized in Canada appeals for community help',
+             'Beloved Pinoy nanny that a family has been looking for for a long time has been found',
+             'Many immigrants are having difficulty paying bills']
+Top5View_df['English Title']=EnglishView
+Top5View_df
+```
 
 ![image](https://github.com/user-attachments/assets/a80f34b7-757f-451d-bdf5-4d710ef5f580)
 
@@ -175,6 +394,13 @@
 ![image](https://github.com/user-attachments/assets/17b87b2c-3f07-4ca7-831b-636739be5399)
 
 <p>For fun, here are the most viewed videos for each month:</p>
+
+```python
+# Most viewed video by month
+
+MostView_df = grouped_df.apply(lambda x: x[['title', 'viewCount']].nlargest(1, 'viewCount'))
+MostView_df
+```
 
 ![image](https://github.com/user-attachments/assets/c0388b5d-cb72-44f1-94d4-9f9e5afd0eff)
 

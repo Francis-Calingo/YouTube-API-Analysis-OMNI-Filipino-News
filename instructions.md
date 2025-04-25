@@ -47,6 +47,7 @@ To install Python requirements:
 pip install -r requirements.txt
 ```
 
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
 
 <details><summary><h2>Part 1: Scraping Channel and Video Data Using YouTube API</h2></summary> 
@@ -246,6 +247,7 @@ video_df
 ```
 <img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure1.4.png"/>
 
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
 
 <details><summary><h2>Part 2: Data Cleaning and Pre-Processing Using Pandas</h2></summary> 
@@ -390,6 +392,7 @@ MostView_df
 
 <img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure2.7.png"/>
 
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
 
 <details><summary><h2>Part 3: Data Visualization with HV Plot</h2></summary> 
@@ -537,5 +540,5 @@ plt.show()
 
 <img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure3.5.png"/>
 
-
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>

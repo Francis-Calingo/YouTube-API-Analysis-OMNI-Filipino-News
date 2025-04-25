@@ -2,7 +2,7 @@
 
 ## Table of Contents
 * [Introduction](#introduction)
-* [Code and Resources Used](#code-and-resources-used)
+* [Code and Setup](#code-and-setup)
 * [YouTube API Introduction](#youtube-api-introduction)
 * [Part 1: Scraping Channel and Video Data Using YouTube API](#part-1-scraping-channel-and-video-data-using-youtube-api)
   * [Step 1: Get channel's ID](#step-1-get-channels-id)
@@ -37,7 +37,7 @@
 
 </details>
   
-<details><summary><h2>Code and Resources Used</h2></summary> 
+<details><summary><h2>Code and Setup</h2></summary> 
   <ul>
     <li><b>IDEs Used:</b> Google Colab, Jupyter Notebook</li>
     <li><b>Python Version:</b> 3.10.12</li>
@@ -48,6 +48,13 @@
       <li><b>Libraries for natural language processing: </b> Image (from PIL), seaborn, matplotlib, WordCloud (from wordcloud), STOPWORDS (from wordcloud), ImageColorGeneratorplotly.express (from wordcloud)</li>
     </ul></li>
   </ul>
+
+If you'd like to fork or run this locally:
+
+```bash
+git clone https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News.git
+cd YouTube-API-Analysis-OMNI-Filipino-News
+```
 
 </details>
 

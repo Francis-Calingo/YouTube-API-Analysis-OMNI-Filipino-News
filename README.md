@@ -56,6 +56,12 @@ git clone https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-
 cd YouTube-API-Analysis-OMNI-Filipino-News
 ```
 
+To install Python requirements:
+```bash
+pip install -r requirements.txt
+```
+
+
 </details>
 
 <details><summary><h2>YouTube API Introduction</h2></summary> 

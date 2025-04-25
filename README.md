@@ -23,6 +23,8 @@
   * [Step 4: Histogram Visualization (Views)](#step-4-histogram-visualization-views)
   * [Step 5: Tagalog Language Natural Language Processing](#step-5-tagalog-language-natural-language-processing)
 * [Discussion](#discussion)
+* [Recommendations](#recommendations)
+* [Assumptions and Caveats](#assumptions-and-caveats)
 * [Credits and Acknlowledgements](#credits-and-acknowledgements)
 
 <details><summary><h2>Introduction</h2></summary> 
@@ -498,11 +500,33 @@ tabs
 
 #### Step 4: Histogram Visualization (Views)
 
+```python
+## Panel 3: Distribution of Views
+
+View_df=New_df[['viewCount']]
+HistPlot=View_df.hvplot.hist(bins=10, title='Distribution of Views')
+HistPlot.opts(xformatter=formatter)
+HistPlot
+```
+
 ![image](https://github.com/user-attachments/assets/92fff153-20ac-42ab-b941-3ef057ef8cd0)
 
 #### Step 5: Tagalog Language Natural Language Processing
 
 <p>Generate a wordcloud to visualize the most commonly used words in the video titles:</p>
+
+```python
+## Panel 4: Tagalog Language NLP
+text=New_df['title'].str.cat(sep=' ')
+
+# Create and generate a word cloud image:
+wordcloud = WordCloud().generate(text)
+
+# Display the generated image:
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis("off")
+plt.show()
+```
 
 ![image](https://github.com/user-attachments/assets/ff11a229-41ae-4636-935d-915045c1ffc9)
 
@@ -510,22 +534,70 @@ tabs
 
 <p>Use STOPWORDS to exclude certain words that are not useful to the analysis such as the ones that fall under either of the three categories. Then, generate a new wordcloud.</p>
 
+```python
+# Set stopwords to exclude geographic places, OMNI, words relating to "Filipino","Pinoy", and "Canadian",
+# and the most common Tagalog words such as "ang" ("the")
+stopwords = set(STOPWORDS)
+stopwords.update(["OMNI News", "Filipino", "News", "Canada","Canadian", "Pilipino",
+                  "Pinoy", "Philippines", "sa", "hindi","Pilipina", "ni", "nang", "para","parang", "OMNI", "sa mga",
+                  "ang", "mga", "yung", "ng","may", "Pinay","na","isang","ngayong","ngayon",
+                  "bilang","ilang","bagong","dating","Pilipinas","Canadians","BC",
+                  "Alberta", "Saskatchewan","Manitoba","Ontario","Vancouver","Toronto","mag",
+                  "Filipina","maging","mula","Philippine","dahil","Surrey","Calgary"])
+
+# Generate a word cloud image
+wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
+
+# Display the generated image:
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis("off")
+plt.show()
+```
+
 ![image](https://github.com/user-attachments/assets/cc5f10e4-3846-4254-a106-58e2ec0efc5f)
 
 </details>
 
 <details><summary><h2>Discussion</h2></summary> 
 
+* **Uploads peaked in the summer months, but total views, comments, and likes peaked near the end of 2024.** The higher upload amount in the summer may reflect the fact that the higher presence of community events in the late spring/summer months (especially in June, which is observed as Philippine Heritage Month in Canada) drives up OMNI News Filipino Edition's coverage capabilities, but the higher total engagements in the latter part of 2024 suggests that other topics are of greater importance and interest to the online Filipino Canadian community.
+  
+* **The Top 5 Most Viewed videos of 2024 all covered stories involving the conditions of the Filipino diaspora as a whole or at an individual level.** This suggests that migration topics remain of high interest to the Filipino diaspora.
+
+* **The vast majority of videos garnered less than 20,000 views, with a select few garnering over 100,000.** In other words, OMNI Filipino coverage exceeding 20,000 views on YouTube would be considered viral.
+
+* **Based on the WordCloud, it appears that words pertaining to cultural events (e.g., "festival", "Heritage Month") or migration (e.g., "caregiver", "international student") were the most frequently mentioned words amongst OMNI News Filipino's 2024 YouTube titles.** It appears that cultural events and migrations stories recieve the most coverage from OMNI News Filipino.
+  
 <p>The resulting data visualizations show that conditions of immigrants (especially in the context of international students and recent changes to Canadian immigration law),
 and Philippine politics in relation to former president Rodrigo Duterte were the most covered and discussed topics in the community in 2024.
-There was a spike of video uploads during the summer months, especially in June (Philippine Heritage Month) and August (Taste of Manila Festival in Toronto).
 Regardless, much of the engagements and discussions still stemmed from the two aforementioned topics.
 With the upcoming Philippine and Canadian general elections, it is of utmost importance for candidates to address the Filipino Canadian community’s concerns with immigration policies and their effects on them.
 </p>
 
 </details>
 
+<details><summary><h2>Recommendations</h2></summary> 
+
+* The increase in uploads during the summer did not translate over for engagements, which peaked around the end of the year.
+
+* Migration stories or stories of Philippine nationals in Canada recieved the most views from 2024.
+
+* 
+
+</details>
+
+<details><summary><h2>Assumptions and Caveats</h2></summary> 
+ 
+* Lack of NLP processing for Tagalog language.
+
+* No sentiment analysis was performed on comments.
+
+* Engagement on OMNI News' Filipino YouTube channel may not be reflective of the wider online Filipino Canadian community, much less the Filipino Canadian community as a whole.
+</details>
+
 <details><summary><h2>Credits and Acknowledgements</h2></summary> 
+
+"Tabs — Panel v1.6.3." https://panel.holoviz.org/reference/layouts/Tabs.html
 
 "Youtube API for Python: How to Create a Unique Data Portfolio Project". Uploaded by Thu Vu, 2022-01-22. YouTube, https://www.youtube.com/watch?v=D56_Cx36oGY
 

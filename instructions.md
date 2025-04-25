@@ -23,7 +23,7 @@
   * [Step 4: Histogram Visualization (Views)](#step-4-histogram-visualization-views)
   * [Step 5: Tagalog Language Natural Language Processing](#step-5-tagalog-language-natural-language-processing)
 
-<details><summary><h2>Code and Resources Used</h2></summary> 
+<details><summary><h2>Code and Setup</h2></summary> 
   <ul>
     <li><b>IDEs Used:</b> Google Colab, Jupyter Notebook</li>
     <li><b>Python Version:</b> 3.10.12</li>
@@ -35,6 +35,18 @@
     </ul></li>
   </ul>
 
+If you'd like to fork or run this locally:
+
+```bash
+git clone https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News.git
+cd YouTube-API-Analysis-OMNI-Filipino-News
+```
+
+To install Python requirements:
+```bash
+pip install -r requirements.txt
+```
+
 </details>
 
 <details><summary><h2>Part 1: Scraping Channel and Video Data Using YouTube API</h2></summary> 
@@ -43,7 +55,7 @@
 
 <p>To get any channel's ID, you'll have to click "share channel" in the "About" section, then you will see a button that will say "copy channel ID".</p>
 
-![image](https://github.com/user-attachments/assets/b578f53e-94fe-4f29-b6fc-9695c3f9a4d1)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure1.1.png"/>
 
 <p>After copying it, paste it in your notebook and set is as a variable for convenience.</p>
 
@@ -102,13 +114,13 @@ def get_channel_stats(youtube, channel_ids):
 
 <p>We now have our channel data:</p>
 
-![image](https://github.com/user-attachments/assets/ca71405b-ee29-47db-bf2e-8adb1ecfef0a)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure1.2.png"/>
 
 #### Step 3: Get playlist ID
 
 <p>To get the playlist ID, go to the playlist of interest, click "share", and you will see its url. The ID is located in the url, after "list=": </p>
 
-![image](https://github.com/user-attachments/assets/b369c794-0919-4589-bfd6-bc6e28c3d364)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure1.3.png"/>
 
 <p>Then use the following code snippet (taken from https://developers.google.com/youtube/v3/docs/playlists/list):</p>
 
@@ -232,7 +244,7 @@ video_df=get_video_details(youtube, video_ids)
 video_df
 # For some reason, a video from OMNI News Mandarin was included in the playlist, perhaps by mistake, disregard
 ```
-![image](https://github.com/user-attachments/assets/588b8783-e50d-463e-8947-89b2f3c0ce04)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure1.4.png"/>
 
 </details>
 
@@ -276,7 +288,7 @@ New_df.set_index('Month')
 New_df
 ```
 
-![image](https://github.com/user-attachments/assets/74064955-824d-4e72-be86-004ddc059214)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure2.1.png"/>
 
 #### Step 5: Group by Months to Perform Month-by-Month Operations
 
@@ -298,8 +310,6 @@ Sum_df=pd.DataFrame(grouped_df[['viewCount', 'likeCount', 'commentCount']].sum()
 Sum_df['Month'] = Sum_df.index.strftime('%B')
 Sum_df.set_index('Month')
 
-![image](https://github.com/user-attachments/assets/8c37dc8a-0a1b-4ba5-b0f1-50f89badad2e)
-
 <p>The monthly average for each metric:</p>
 
 ```python
@@ -311,7 +321,7 @@ Mean_df['Month'] = Size_df.index.strftime('%B')
 Mean_df.set_index('Month')
 ```
 
-![image](https://github.com/user-attachments/assets/9309310c-5d6e-47f1-b800-a7df26e9a8ff)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure2.2.png"/>
 
 <p>A similar operation can be executed for total uploads:</p>
 
@@ -325,7 +335,7 @@ Size_df['Month'] = Size_df.index.strftime('%B')
 Size_df.set_index('Month')
 ```
 
-![image](https://github.com/user-attachments/assets/f306cc94-da69-46e6-b17b-0d4c4999638d)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure2.3.png"/>
 
 <p>An extra operation for further analysis:</p>
 
@@ -340,7 +350,7 @@ PerVid_df['Month'] = Size_df.index.strftime('%B')
 PerVid_df.set_index('Month')
 ```
 
-![image](https://github.com/user-attachments/assets/2dfc6d25-37a2-483e-b804-2a5aab8f532a)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure2.4.png"/>
 
 #### Step 6: Top 5 for Each Metric for 2024
 
@@ -362,13 +372,12 @@ Top5View_df['English Title']=EnglishView
 Top5View_df
 ```
 
-![image](https://github.com/user-attachments/assets/a80f34b7-757f-451d-bdf5-4d710ef5f580)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure2.5.png"/>
 
 <p>You can use similar snippets for ascertaining the 5 most liked and 5 most commented videos, respectively. Just ensure to change the variables and column assignment:</p>
 
-![image](https://github.com/user-attachments/assets/c58454e0-e5c2-485b-829b-fe3cfdf2bcef)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure2.6.png"/>
 
-![image](https://github.com/user-attachments/assets/17b87b2c-3f07-4ca7-831b-636739be5399)
 
 <p>For fun, here are the most viewed videos for each month:</p>
 
@@ -379,7 +388,7 @@ MostView_df = grouped_df.apply(lambda x: x[['title', 'viewCount']].nlargest(1, '
 MostView_df
 ```
 
-![image](https://github.com/user-attachments/assets/c0388b5d-cb72-44f1-94d4-9f9e5afd0eff)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure2.7.png"/>
 
 </details>
 
@@ -441,13 +450,8 @@ bars=pn.Tabs(("Uploads Per Month",fig1), ("Total Views Per Month",fig2),
 bars
 ```
 
-![image](https://github.com/user-attachments/assets/8321fe5c-bcd4-4cc6-94a7-c976514abd7a)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure3.1.png"/>
 
-![image](https://github.com/user-attachments/assets/3e8f8e0d-a465-441e-aee5-b8d6bf588cc6)
-
-![image](https://github.com/user-attachments/assets/996c5183-34bf-45d6-a599-99e0c9ac44af)
-
-![image](https://github.com/user-attachments/assets/21734e03-36c3-4c81-a2da-e6812cb707c9)
 
 #### Step 3: Create Second Panel Visualization (Top 5/Top 10 Tables)
 
@@ -470,7 +474,8 @@ tabs = pn.Tabs(t1, t2, t3,t4)
 tabs
 ```
 
-![image](https://github.com/user-attachments/assets/2cc4b1ef-838d-4bbb-ac1f-3cef6941a4e5)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure3.2.png"/>
+
 
 #### Step 4: Histogram Visualization (Views)
 
@@ -483,7 +488,8 @@ HistPlot.opts(xformatter=formatter)
 HistPlot
 ```
 
-![image](https://github.com/user-attachments/assets/92fff153-20ac-42ab-b941-3ef057ef8cd0)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure3.3.png"/>
+
 
 #### Step 5: Tagalog Language Natural Language Processing
 
@@ -502,7 +508,8 @@ plt.axis("off")
 plt.show()
 ```
 
-![image](https://github.com/user-attachments/assets/ff11a229-41ae-4636-935d-915045c1ffc9)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure3.4.png"/>
+
 
 <p>There are many words that are not useful to this analysis such as "OMNI". Geographic names such as cities, common Tagalog words such as "ang" ("the") are also not useful.</p>
 
@@ -528,6 +535,7 @@ plt.axis("off")
 plt.show()
 ```
 
-![image](https://github.com/user-attachments/assets/cc5f10e4-3846-4254-a106-58e2ec0efc5f)
+<img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure3.5.png"/>
+
 
 </details>

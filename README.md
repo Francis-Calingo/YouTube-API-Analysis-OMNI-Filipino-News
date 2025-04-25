@@ -25,7 +25,7 @@
 * [Discussion](#discussion)
 * [Recommendations](#recommendations)
 * [Assumptions and Caveats](#assumptions-and-caveats)
-* [Credits and Acknlowledgements](#credits-and-acknowledgements)
+* [Credits and Acknowledgements](#credits-and-acknowledgements)
 
 <details><summary><h2>Introduction</h2></summary> 
   <ul>

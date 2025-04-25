@@ -20,6 +20,7 @@
 
   </ul>
 
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
   
 <details><summary><h2>Code and Setup</h2></summary> 
@@ -46,7 +47,7 @@ To install Python requirements:
 pip install -r requirements.txt
 ```
 
-
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
 
 <details><summary><h2>YouTube API Introduction</h2></summary> 
@@ -58,7 +59,7 @@ pip install -r requirements.txt
 api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 ```
 
-
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
 
 <details><summary><h2>Results Summary: Scraping Channel and Video Data Using YouTube API</h2></summary> 
@@ -71,6 +72,7 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 
 <img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure1.4.png"/>
 
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
 
 <details><summary><h2>Results Summary: Data Cleaning and Pre-Processing Using Pandas</h2></summary> 
@@ -104,9 +106,10 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 
 <img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure2.7.png"/>
 
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
 
-<details><summary><h2>Part 3: Data Visualization with HV Plot</h2></summary> 
+<details><summary><h2>Results Summary: Data Visualization with HV Plot</h2></summary> 
 
 
 #### Monthly Statistics
@@ -129,7 +132,7 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 
 <img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure3.5.png"/>
 
-
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
 
 <details><summary><h2>Discussion</h2></summary> 
@@ -142,6 +145,7 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 
 * **Based on the WordCloud, it appears that words pertaining to cultural events (e.g., "festival", "Heritage Month") or migration (e.g., "caregiver", "international student") were the most frequently mentioned words amongst OMNI News Filipino's 2024 YouTube titles.** It appears that cultural events and migrations stories recieve the most coverage from OMNI News Filipino.
 
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
 
 <details><summary><h2>Recommendations</h2></summary> 
@@ -160,6 +164,7 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 
 * OMNI News also has Italian, Punjabi, Arabic, Cantonese, and Mandarin editions. There is an opportunity to perform similar analyses on neach edition and attempt to ascertain online community engagement for their different language newscasts. This would be valuable, as it is possible that, given Canada's increasingly multicultural demographic, OMNI may seek to expand the number of languages they offer their newscasts in.
 
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
 
 <details><summary><h2>Assumptions and Caveats</h2></summary> 
@@ -178,5 +183,6 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 
 "Youtube API for Python: How to Create a Unique Data Portfolio Project". Uploaded by Thu Vu, 2022-01-22. YouTube, https://www.youtube.com/watch?v=D56_Cx36oGY
 
+[<b>Back to Table of Contents</b>](#table-of-contents)
 </details>
 

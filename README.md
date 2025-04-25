@@ -23,6 +23,7 @@
   * [Step 4: Histogram Visualization (Views)](#step-4-histogram-visualization-views)
   * [Step 5: Tagalog Language Natural Language Processing](#step-5-tagalog-language-natural-language-processing)
 * [Discussion](#discussion)
+* [Credits and Acknlowledgements](#credits-and-acknowledgements)
 
 <details><summary><h2>Introduction</h2></summary> 
   <ul>
@@ -418,15 +419,51 @@ MostView_df
 
 <p>Use the following snippet to generate an hv bar plot for total uploads per month:</p>
 
-![image](https://github.com/user-attachments/assets/fb415cb7-b519-4aa8-bde3-d2399f2b42d5)
+```python
+## Panel 1: Monthly distribution of views, likes, comments, and uploads
 
+# Change the column name from '0' to 'size'
+
+Size_df['Month'] = Size_df.index.strftime('%B')
+Size_df.set_index('Month')
+
+
+fig1=Size_df.hvplot.bar(x='Month', y='Number of Uploads')
+fig1.opts(title='Number of Video Uploads per Month', yformatter=formatter)
+```
 <p>Similarly, generate similar plots for monthly total likes, views, and comments, as well as their averages:</p>
 
-![image](https://github.com/user-attachments/assets/ca1d8de9-6d7c-478b-8106-dd69f5652999)
+```python
+fig2=Sum_df.hvplot.bar(x='Month', y='viewCount')
+fig2.opts(title='Total Views per Month',yformatter=formatter)
 
-![image](https://github.com/user-attachments/assets/06ec473e-2361-4c65-b784-e24e404ef225)
+fig3=Sum_df.hvplot.bar(x='Month', y='likeCount')
+fig3.opts(title='Total Likes per Month',yformatter=formatter)
+
+fig4=Sum_df.hvplot.bar(x='Month', y='commentCount')
+fig4.opts(title='Total Comments per Month',yformatter=formatter)
+```
+```python
+fig2=Sum_df.hvplot.bar(x='Month', y='viewCount')
+fig2.opts(title='Total Views per Month',yformatter=formatter)
+
+fig3=Sum_df.hvplot.bar(x='Month', y='likeCount')
+fig3.opts(title='Total Likes per Month',yformatter=formatter)
+
+fig4=Sum_df.hvplot.bar(x='Month', y='commentCount')
+fig4.opts(title='Total Comments per Month',yformatter=formatter)
+```
 
 <p>This is now where the panel library shines, because it amalgamates all of these plots into one interactive panel:</p>
+
+```python
+# Amalgamate bar plots
+bars=pn.Tabs(("Uploads Per Month",fig1), ("Total Views Per Month",fig2),
+            ("Total Likes Per Month", fig3), ("Total Comments Per Month",fig4),
+            ("Avg Views Per Month",fig5), ("Avg Likes Per Month",fig6),
+             ("Avg Comments Per Month", fig7))
+bars
+```
 
 ![image](https://github.com/user-attachments/assets/8321fe5c-bcd4-4cc6-94a7-c976514abd7a)
 
@@ -439,6 +476,23 @@ MostView_df
 #### Step 3: Create Second Panel Visualization (Top 5/Top 10 Tables)
 
 <p>In a similar vein, we can get the top 5/top 10 tables, and amalgamate them into one interactive panel:</p>
+
+```python
+## Panel 2: Tables of most viewed, liked, and commented videos
+
+t1=Top5View_df.drop('title', axis=1)
+t1.name='Top 5 Most Viewed Videos of 2024'
+t2=Top5Like_df.drop('title', axis=1)
+t2.name='Top 5 Most Liked Videos of 2024'
+t3=Top5Comment_df.drop('title', axis=1)
+t3.name='Top 5 Most Commented Videos of 2024'
+t4=MostView_df.drop('title', axis=1)
+t4.name='Most Viewed Videos of 2024 by Month'
+
+
+tabs = pn.Tabs(t1, t2, t3,t4)
+tabs
+```
 
 ![image](https://github.com/user-attachments/assets/2cc4b1ef-838d-4bbb-ac1f-3cef6941a4e5)
 
@@ -470,3 +524,10 @@ With the upcoming Philippine and Canadian general elections, it is of utmost imp
 </p>
 
 </details>
+
+<details><summary><h2>Credits and Acknowledgements</h2></summary> 
+
+"Youtube API for Python: How to Create a Unique Data Portfolio Project". Uploaded by Thu Vu, 2022-01-22. YouTube, https://www.youtube.com/watch?v=D56_Cx36oGY
+
+</details>
+

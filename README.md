@@ -578,21 +578,30 @@ With the upcoming Philippine and Canadian general elections, it is of utmost imp
 
 <details><summary><h2>Recommendations</h2></summary> 
 
-* The increase in uploads during the summer did not translate over for engagements, which peaked around the end of the year.
+<p>The findings may, at first, not much actionable insights from a public policy lens. Regardless, the findings can be helpful for research purposes, especially research in social science, demography, and ethnic media.</p>
 
-* Migration stories or stories of Philippine nationals in Canada recieved the most views from 2024.
+* The increase in uploads during the summer did not translate over for engagements, which peaked around the end of the year. This suggests that the Filipino Canadian online community following OMNI News Filipino's coverage are more inclined towards more specific topics, which is highly possible given that more specific prominent events that occurred at the latter part of the year such as changes to the Canadian immigration system and political events and mobilizations in support of former Philippine President Rodrigo Duterte garnered high levels of engagements. That is something for researchers whose focus area is the Filipino Canadian community to consider, albeit, should be careful not to conflate Filipino Canadian online engagement with broad Filipino Canadian concensus.
 
-* 
+* Migration stories or stories of Philippine nationals in Canada recieved the most views from 2024. This reflects the importance of the topic of migration to the community. Organizations and institutions conducting community outreach to the community-be it governmental, educational, healthcare, business, etc.-should draft strategies for effectively reaching out to the Filipino Canadian community, especially only.
+
+* OMNI News Filipino's YouTube videos typically garner less than 20,000 views. There are many possible factors that could be the cause of this, so it would be difficult to ascertain or even hypothesize them. Regardless, this presents an opportunity to study media consumption of the Filipino Canadian community, and attempt to determine if the community as a whole is more inclined (whether by choice or due to accessibility reasons) to consume print media rather than digital media (and even for those that consume digital media, if they have a preference for English-language media).
+
+* Stories covering cultural events and migration recieved the most coverage from OMNI News Filipino Edition. While covering such stories is important (and, as the plots show, migration stories remain deply important to the Filipino Canadian online community), it is important for the outlet to ensure that the outlet gives a fair amount of coverage to other topics that may also be just as pertinent to the Filipino Canadian community. Actions such as consistent availability and opportunities for community members to give feedback could help in that regard.
+
+* The findings could be scaled up and productionized into an interactive online dashboard that OMNI News could utilize to engage with their viewers and grow their audience.
+
+* OMNI News also has Italian, Punjabi, Arabic, Cantonese, and Mandarin editions. There is an opportunity to perform similar analyses on neach edition and attempt to ascertain online community engagement for their different language newscasts. This would be valuable, as it is possible that, given Canada's increasingly multicultural demographic, OMNI may seek to expand the number of languages they offer their newscasts in.
 
 </details>
 
 <details><summary><h2>Assumptions and Caveats</h2></summary> 
  
-* Lack of NLP processing for Tagalog language.
+* Currently, there is a lack of NLP capabilities for Tagalog language. Which is why I had to manually create a STOPWORDS list based on my working knowledge of Tagalog, as well as the appearance of the WordCloud. Of course, that method presents limitations. Currently there are efforts to develop Tagalog NLP pipelines and libraries (for example, [calamanCY](https://github.com/ljvmiranda921/calamanCy), an attempt to develop a Tagalog NLP framework with spaCY), but they remain in their infancy and are lagrely untested.
 
-* No sentiment analysis was performed on comments.
+* No sentiment analysis was performed on comments. The comments section is a mix of Tagalog and English, which would make any kind of analysis with current Python libraries (see above point). However, analyzing them would still be valuable.
 
-* Engagement on OMNI News' Filipino YouTube channel may not be reflective of the wider online Filipino Canadian community, much less the Filipino Canadian community as a whole.
+* Engagement on OMNI News' Filipino YouTube channel may not be reflective of the wider online Filipino Canadian community, much less the Filipino Canadian community as a whole. More comprehensive analyses on other Tagalog media (digital and media) would be required.
+  
 </details>
 
 <details><summary><h2>Credits and Acknowledgements</h2></summary> 

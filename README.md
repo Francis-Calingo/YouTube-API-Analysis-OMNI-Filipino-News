@@ -1,6 +1,6 @@
 # PROJECT OVERVIEW: YouTube API Analysis, OMNI Filipino News' 2024 Coverage (with Python)
 
-## Table of Contents
+# Table of Contents
 * [Introduction](#introduction)
 * [Code and Setup](#code-and-setup)
 * [YouTube API Introduction](#youtube-api-introduction)
@@ -12,7 +12,7 @@
 * [Assumptions and Caveats](#assumptions-and-caveats)
 * [Credits and Acknowledgements](#credits-and-acknowledgements)
 
-<details><summary><h2>Introduction</h2></summary> 
+# Introduction
   <ul>
     <li>Used YouTube's API to extract data from OMNI Television's Filipino playlist (particularly its 2024 videos).</li>
     <li>OMNI, one of the largest multilingual media outlets in Canada, offers services in Tagalog ("Filipino"). Therefore, scraping data on their Filipino playlist to ascertain and discern potentially interesting insights on topics that mattered a lot to the Filipino Canadian community.</li>
@@ -21,9 +21,10 @@
   </ul>
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
-</details>
+
+---
   
-<details><summary><h2>Code and Setup</h2></summary> 
+# Code and Setup
   <ul>
     <li><b>IDEs Used:</b> Google Colab, Jupyter Notebook</li>
     <li><b>Python Version:</b> 3.10.12</li>
@@ -48,9 +49,10 @@ pip install -r requirements.txt
 ```
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
-</details>
 
-<details><summary><h2>YouTube API Introduction</h2></summary> 
+---
+
+# YouTube API Introduction
 
 <p>An application program interface (API) is a mechanism that allows for two computer applications to communicate and connect with each other. Many websites, from the National Hockey League to YouTube, have their own API, which allows local machines such as your laptop and mobile phone to access them and their data. In fact, for this project, YouTube API will be used, as it is a helpful tool in ascertaining a wide variety of data from YouTube channels, from its engagements to upload counts to qualitative data such as its most-liked comments. However, before beginning any project involving YouTube's API, one will need an API key. Instructions to receive the key are stipulated on its website: https://developers.google.com/youtube/v3/getting-started . A Google account is needed. Then, set a variable equal to the key for convenience. Keys are uniquely generated, so it will be different for each user.</p>
 
@@ -60,9 +62,10 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 ```
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
-</details>
 
-<details><summary><h2>Results Summary: Scraping Channel and Video Data Using YouTube API</h2></summary> 
+---
+
+# Results Summary: Scraping Channel and Video Data Using YouTube API
 
 #### Channel data
 
@@ -73,9 +76,10 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 <img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure1.4.png"/>
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
-</details>
 
-<details><summary><h2>Results Summary: Data Cleaning and Pre-Processing Using Pandas</h2></summary> 
+---
+
+# Results Summary: Data Cleaning and Pre-Processing Using Pandas
 
 
 #### Filter for 2024 Videos
@@ -107,9 +111,10 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 <img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure2.7.png"/>
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
-</details>
 
-<details><summary><h2>Results Summary: Data Visualization with HV Plot</h2></summary> 
+---
+
+# Results Summary: Data Visualization with HV Plot
 
 
 #### Monthly Statistics
@@ -133,9 +138,10 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 <img src="https://github.com/Francis-Calingo/YouTube-API-Analysis-OMNI-Filipino-News/blob/main/Figures/Figure3.5.png"/>
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
-</details>
 
-<details><summary><h2>Discussion</h2></summary> 
+---
+
+# Discussion
 
 * **Uploads peaked in the summer months, but total views, comments, and likes peaked near the end of 2024.** The higher upload amount in the summer may reflect the fact that the higher presence of community events in the late spring/summer months (especially in June, which is observed as Philippine Heritage Month in Canada) drives up OMNI News Filipino Edition's coverage capabilities, but the higher total engagements in the latter part of 2024 suggests that other topics are of greater importance and interest to the online Filipino Canadian community.
   
@@ -146,9 +152,10 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 * **Based on the WordCloud, it appears that words pertaining to cultural events (e.g., "festival", "Heritage Month") or migration (e.g., "caregiver", "international student") were the most frequently mentioned words amongst OMNI News Filipino's 2024 YouTube titles.** It appears that cultural events and migrations stories recieve the most coverage from OMNI News Filipino.
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
-</details>
 
-<details><summary><h2>Recommendations</h2></summary> 
+---
+
+# Recommendations
 
 <p>The findings may, at first, not much actionable insights from a public policy lens. Regardless, the findings can be helpful for research purposes, especially research in social science, demography, and ethnic media.</p>
 
@@ -165,24 +172,26 @@ api_key='AIzaSyD0yX1_guVPsz-Aol324Bl3aUFlh86b-hM'
 * OMNI News also has Italian, Punjabi, Arabic, Cantonese, and Mandarin editions. There is an opportunity to perform similar analyses on neach edition and attempt to ascertain online community engagement for their different language newscasts. This would be valuable, as it is possible that, given Canada's increasingly multicultural demographic, OMNI may seek to expand the number of languages they offer their newscasts in.
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
-</details>
 
-<details><summary><h2>Assumptions and Caveats</h2></summary> 
+---
+
+# Assumptions and Caveats
  
 * Currently, there is a lack of NLP capabilities for Tagalog language. Which is why I had to manually create a STOPWORDS list based on my working knowledge of Tagalog, as well as the appearance of the WordCloud. Of course, that method presents limitations. Currently there are efforts to develop Tagalog NLP pipelines and libraries (for example, [calamanCY](https://github.com/ljvmiranda921/calamanCy), an attempt to develop a Tagalog NLP framework with spaCY), but they remain in their infancy and are lagrely untested.
 
 * No sentiment analysis was performed on comments. The comments section is a mix of Tagalog and English, which would make any kind of analysis with current Python libraries (see above point). However, analyzing them would still be valuable.
 
 * Engagement on OMNI News' Filipino YouTube channel may not be reflective of the wider online Filipino Canadian community, much less the Filipino Canadian community as a whole. More comprehensive analyses on other Tagalog media (digital and media) would be required.
-  
-</details>
 
-<details><summary><h2>Credits and Acknowledgements</h2></summary> 
+[<b>Back to Table of Contents</b>](#table-of-contents)
+  
+---
+
+# Credits and Acknowledgements
 
 "Tabs — Panel v1.6.3." https://panel.holoviz.org/reference/layouts/Tabs.html
 
 "Youtube API for Python: How to Create a Unique Data Portfolio Project". Uploaded by Thu Vu, 2022-01-22. YouTube, https://www.youtube.com/watch?v=D56_Cx36oGY
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
-</details>
 
